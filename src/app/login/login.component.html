@@ -1,0 +1,65 @@
+<!-- 
+<div class="container">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" [(ngModel)]="username" placeholder="Usuario">
+    <input type="password" [(ngModel)]="password" placeholder="Contraseña">
+    <button (click)="login()">Entrar</button>
+</div>
+-->
+  
+  <div class="login-box">
+    <div class="login-logo">
+      <a ><b>F</b>oro :)</a>
+    </div>
+    <!-- /.login-logo -->
+    
+
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Inicia session con tu cuenta</p>
+        <form  method="post">
+          <div class="input-group mb-3">
+            <input class="form-control" [ngClass]="{'is-invalid': error}" type="text" [(ngModel)]="username" placeholder="Usuario" name="username" />
+            <div class="input-group-text"><span class="bi bi-person-circle"></span></div>
+          </div>
+          <div class="input-group mb-3">
+            <input class="form-control"  [ngClass]="{'is-invalid': error}"  type="password" [(ngModel)]="password" placeholder="Password" name="password" />
+            <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+          </div>
+          <!--begin::Row-->
+          <div class="row">
+            <div class="col-8">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" />
+                <label class="form-check-label" for="flexCheckDefault"> Recuerdame</label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" (click)="login()">Ingresar</button>
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!--end::Row-->
+        </form>
+        
+        <!-- /.social-auth-links -->
+        <p class="mb-1"><a href="forgot-password.html">Olvide mi contraseña</a></p>
+        <p class="mb-0">
+          <a href="register.html" class="text-center"> Registrarse </a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+
+   
+
+    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <strong>Error:</strong> Usuario o contraseña inválidos.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+    
+  </div>
+  

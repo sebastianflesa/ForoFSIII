@@ -1,0 +1,40 @@
+
+<nav class="app-header navbar navbar-expand-lg bg-body">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Navbar Toggler-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--end::Navbar Toggler-->
+
+    <!--begin::Navbar Content-->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!--begin::Start Navbar Links-->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+            <i class="bi bi-list"></i>
+          </a>
+        </li>
+        <li class="nav-item"><a href="/dashboard" class="nav-link">Home</a></li>
+        <li *ngIf="isAdmin" class="nav-item">
+          <a href="/usuarios" class="nav-link">Usuarios</a>
+        </li>
+      </ul>
+      <!--end::Start Navbar Links-->
+
+      <!--begin::End Navbar Links-->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="/perfil" class="nav-link">Mi Perfil</a></li>
+        <li class="nav-item">
+          <button (click)="logout()" class="nav-link btn btn-link p-0">Cerrar Sesión</button>
+        </li>
+      </ul>
+      <!--end::End Navbar Links-->
+    </div>
+    <!--end::Navbar Content-->
+  </div>
+  <!--end::Container-->
+</nav>
+

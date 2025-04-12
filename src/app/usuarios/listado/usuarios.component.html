@@ -1,0 +1,87 @@
+<div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          
+        
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+       
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lista de usuario</h3>
+
+                <div class="card-tools">
+                   
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    
+                    <div class="input-group-append">
+                        <a href="usuarios/crear" class="btn btn-success text-white">
+                        Crear nuevo
+                        </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre usuario</th>
+                      <th>Email</th>
+                      <th>Status</th>
+                      <th>Creado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    <tr *ngFor="let user of users">
+                      <td>{{ user.id }}</td>
+                      <td>{{ user.username }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>
+                      <span 
+                          class="float-right badge" 
+                          [ngClass]="{'bg-success': user.status == true, 'bg-danger': user.status !== true}">
+                            {{ user.status ? 'Activo' : 'Inactivo' }}
+                      </span>
+                      </td>
+                      <td>
+                        <span class="tag tag-success">{{ user.createdAt }}</span>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-outline-primary btn-block">
+                          <i class="bi bi-pencil"></i> Editar
+                        </button>
+
+                        <button type="button" class="btn btn-outline-danger btn-block">
+                          <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+       
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
