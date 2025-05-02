@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
 import { CommonModule } from '@angular/common';
-import { UserInterface } from '../../interfaces/user';
 
 @Component({  
   selector: 'app-usuarios',
@@ -13,12 +12,21 @@ import { UserInterface } from '../../interfaces/user';
 
 export class UsuariosComponent implements OnInit {
   users: any[] = [];
+  isLoading: boolean = true;
 
   constructor(private userService: UserService) {}
   
   ngOnInit(): void {
-    this.getAllUsers();
+    this.userService.fetchUsersFromApi().subscribe(users => {
+      this.users = users;
+      this.isLoading = false;
+      console.log(users);
+    });
+    
+
   }
+
+  
 
   getAllUsers() {
     this.userService.getAllUsers().subscribe((response) => {

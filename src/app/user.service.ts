@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { UserInterface } from './interfaces/user';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 const USERS_KEY = 'users';
 
@@ -11,10 +13,17 @@ export class UserService {
 
   private users: UserInterface[] = [];
   private currentUserSubject = new BehaviorSubject<UserInterface | null>(null);
+  private apiUsersUrl = environment.apiUsersUrl;
 
-  constructor() {
+  constructor( private http: HttpClient) {
     this.loadUsersFromStorage();
   }
+
+  fetchUsersFromApi(): Observable<UserInterface[]> {
+    return this.http.get<UserInterface[]>(this.apiUsersUrl.concat('/usuarios/lista'));
+  }
+
+  
 
   private loadUsersFromStorage(): void {
     const data = localStorage.getItem(USERS_KEY);
@@ -22,16 +31,7 @@ export class UserService {
       this.users = JSON.parse(data);
     } else {
       this.users = [
-        {
-          id: 1, username: "admin", name: 'sebasss', email: 'sebasss@example.com', password: '1234', roles: ['admin'],
-          status: true,
-          createdAt: new Date()
-        },
-        {
-          id: 2, username: "juanin", name: 'juanin', email: 'juanin@example.com', password: '1234', roles: ['user'],
-          status: true,
-          createdAt: new Date()
-        },
+       
       ];
       this.saveUsersToStorage();
     }
@@ -81,6 +81,12 @@ export class UserService {
 
   getCurrentUser(): Observable<UserInterface | null> {
     return this.currentUserSubject.asObservable();
+  }
+
+  updateUserApi(user: UserInterface): Observable<UserInterface> {
+    const apiUrl = this.apiUsersUrl.concat('/usuarios/actualizar');
+    console.log(user);
+    return this.http.post<UserInterface>(apiUrl, user);
   }
 
 
