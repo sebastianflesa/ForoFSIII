@@ -42,21 +42,5 @@ export class LoginComponent implements OnInit {
     
   }
 
-  /*
-  login(): void {
-    this.auth.login(this.user).subscribe(
-      (response) => {
-        if (response) {
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.error = true;
-        }
-      },
-      (error) => {
-        console.error('Login error:', error);
-        this.error = true;
-      }
-    );
-  }
-  */
+
 }

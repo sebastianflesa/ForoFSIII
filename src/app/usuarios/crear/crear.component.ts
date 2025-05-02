@@ -20,10 +20,12 @@ export class CrearComponent {
     username: '',
     email: '',
     password: '',
-    roles: [],
     name: '',
     status: false,
-    createdAt: new Date()
+    createdAt: new Date(),
+    nombre: '',
+    nombreUsuario: '',
+    fechaNacimiento: new Date()
   };
 
   onSubmit(form: NgForm): void {

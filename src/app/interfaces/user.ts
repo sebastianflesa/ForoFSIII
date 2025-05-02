@@ -1,11 +1,14 @@
 export interface UserInterface {
     id: number;
+    nombre: string;
+    nombreUsuario: string;
     status: boolean,
     createdAt: Date,
     username: string;
     name: string;
     email: string;
     password: string;
-    roles: string[];
+    fechaNacimiento: Date;
+    contraseña?: string;
   }
   
