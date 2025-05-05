@@ -92,18 +92,7 @@ export class PerfilComponent implements OnInit {
       }
     });
 
-    
-    /*
-    this.userService.updateUser(this.user).subscribe(updatedUser => {
-      if (updatedUser) {
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        alert('Perfil actualizado correctamente');
-        
-      } else {
-        alert('Error al actualizar el perfil');
-      }
-    });
-    */
+  
   }
 
 }

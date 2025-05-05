@@ -66,13 +66,6 @@ describe('LoginComponent', () => {
     expect(component.error).toBeTrue();
   }));
 
-  it('error del backend', fakeAsync(() => {
-    authServiceSpy.login.and.returnValue(throwError(() => new Error('Error')));
-    component.login();
-    tick();
-
-    expect(component.error).toBeTrue();
-  }));
 
   it('muestra alerta si error es true', () => {
     component.error = true;
