@@ -16,9 +16,8 @@ export class AuthService {
 
   login(email: string, password: string) : Observable<boolean> {
     const apiUrl = this.apiUsersUrl.concat('/usuarios/login');
-    
     const body = { nombreUsuario: email, contraseña: password };
-    return this.http.post(apiUrl, body, { responseType: 'json' }).pipe(
+    return this.http.post(apiUrl, body, { responseType: 'json'}).pipe(
       map((response: any) => {
         console.log(response);
         if (response.success) {
