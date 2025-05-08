@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
 import { map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
@@ -10,7 +9,7 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private router: Router, private userService: UserService ) { }
+  constructor(private http: HttpClient, private router: Router ) { }
   private apiUsersUrl = environment.apiUsersUrl;
 
 
@@ -31,24 +30,8 @@ export class AuthService {
       })
     );
     
-
-    /*
-    this.userService.getUserByUsernamePassword(email, password).subscribe(
-      (response) => {
-        if (response) {
-          isAuthenticated = true;
-          localStorage.setItem('user', JSON.stringify(response));
-          localStorage.setItem('isLoggedIn', 'true');
-        } else {
-          console.error('Invalid credentials');
-        }
-      }
-    );
-    return of(isAuthenticated);
-    */
   }
   
-
   logout(): void {
     localStorage.removeItem('isLoggedIn');
     console.log(localStorage);

@@ -38,7 +38,7 @@ describe('UsuariosComponent', () => {
   ];
 
   beforeEach(async () => {
-    const spy = jasmine.createSpyObj('UserService', ['fetchUsersFromApi', 'getAllUsers']);
+    const spy = jasmine.createSpyObj('UserService', ['fetchUsersFromApi', 'getAllUsers', 'borrarUsuario']);
 
     await TestBed.configureTestingModule({
       imports: [UsuariosComponent, CommonModule],
@@ -76,6 +76,20 @@ describe('UsuariosComponent', () => {
   it('should have isLoading true initially', () => {
     expect(component.isLoading).toBeTrue();
   });
+
+  it('should call borrarUsuario and refresh user list on success', () => {
+    spyOn(window, 'confirm').and.returnValue(true);
+  
+    const userId = 1;
+    userServiceSpy.borrarUsuario.and.returnValue(of(true));
+    userServiceSpy.fetchUsersFromApi.and.returnValue(of(mockUsers));
+  
+    component.onDeleteUser(userId);
+  
+    expect(userServiceSpy.borrarUsuario).toHaveBeenCalledWith({ id: userId });
+    expect(userServiceSpy.fetchUsersFromApi).toHaveBeenCalled();
+  });
+  
 
   
 });

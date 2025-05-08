@@ -14,7 +14,7 @@ export class UsuariosComponent implements OnInit {
   users: any[] = [];
   isLoading: boolean = true;
 
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
   
   ngOnInit(): void {
     this.userService.fetchUsersFromApi().subscribe(users => {
@@ -25,9 +25,15 @@ export class UsuariosComponent implements OnInit {
     
 
   }
-
-  
-
+  onDeleteUser(userId: number) {
+    if (!confirm('¡¿Esta seguro de eliminar este usuario?!')) {
+      return;
+    }
+    const body = {id: userId};
+    this.userService.borrarUsuario(body).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
   getAllUsers() {
     this.userService.getAllUsers().subscribe((response) => {
       this.users = response;
