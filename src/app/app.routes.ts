@@ -8,15 +8,15 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './usuarios/listado/usuarios.component';
 import { CrearComponent} from './usuarios/crear/crear.component';
-
+import { RegistrarseComponent } from './usuarios/registrarse/registrarse.component';
 
 export const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
-    children: [{
-        path: 'login', component: LoginComponent
-      }
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'registrarse', component: RegistrarseComponent }
     ]
   },
   {

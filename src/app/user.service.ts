@@ -89,5 +89,16 @@ export class UserService {
     return this.http.post<UserInterface>(apiUrl, user);
   }
 
+  crearUsuario(data: any): Observable<any> {
+    const apiUrl = this.apiUsersUrl.concat('/usuarios/crear');
+    return this.http.post(apiUrl, data);
+  }
+
+  borrarUsuario(data: any): Observable<any> {
+    const apiUrl = this.apiUsersUrl.concat('/usuarios/borrar');
+    return this.http.post(apiUrl, data);
+  }
+
+
 
 }
